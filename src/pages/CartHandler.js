@@ -1,21 +1,32 @@
 function addToCart(cartItems, item) {
-    const itemIndex = cartItems.findIndex((cartItem) => cartItem.id === item.id);
-  
+  if (cartItems && Array.isArray(cartItems)) {
+    const itemIndex = cartItems.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+
+    let updatedCartItems = [];
+
     if (itemIndex !== -1) {
-      const updatedCartItems = [...cartItems];
+      updatedCartItems = [...cartItems];
       updatedCartItems[itemIndex].quantity += 1;
       return updatedCartItems;
     } else {
-      const updatedCartItems = [...cartItems, { ...item, quantity: 1 }];
+      updatedCartItems = [...cartItems, { ...item, quantity: 1 }];
       return updatedCartItems;
     }
   }
   
-  function removeOneFromCart(cartItems, item) {
-    const itemIndex = cartItems.findIndex((cartItem) => cartItem.id === item.id);
-  
+  return cartItems
+}
+
+function removeOneFromCart(cartItems, item) {
+  if (cartItems && Array.isArray(cartItems) && cartItems.length > 0) {
+    const itemIndex = cartItems.findIndex(
+      (cartItem) => cartItem.id === item.id
+    );
+    let updatedCartItems = [];
     if (itemIndex !== -1) {
-      const updatedCartItems = [...cartItems];
+      updatedCartItems = [...cartItems];
       if (updatedCartItems[itemIndex].quantity > 1) {
         updatedCartItems[itemIndex].quantity -= 1;
         return updatedCartItems;
@@ -24,13 +35,19 @@ function addToCart(cartItems, item) {
         return updatedCartItems;
       }
     }
-  
-    return cartItems;
   }
-  
-  function removeFromCart(cartItems, itemId) {
-    const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
-    return updatedCartItems;
-  }
-  
-  export { addToCart, removeOneFromCart, removeFromCart };
+
+  return cartItems;
+}
+
+function removeFromCart(cartItems, itemId) {
+  console.log(
+    "🚀 ~ file: CartHandler.js:38 ~ removeFromCart ~ cartItems:",
+    cartItems
+  );
+
+  const updatedCartItems = cartItems.filter((item) => item.id !== itemId);
+  return updatedCartItems;
+}
+
+export { addToCart, removeOneFromCart, removeFromCart };

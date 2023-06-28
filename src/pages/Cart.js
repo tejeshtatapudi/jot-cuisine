@@ -77,16 +77,24 @@
 
 // export default Cart;
 
-import React from 'react';
-import { addToCart, removeOneFromCart, removeFromCart } from './CartHandler';
-import '../CSS/cart.css';
+import React from "react";
+import { addToCart, removeOneFromCart, removeFromCart } from "./CartHandler";
+import "../CSS/cart.css";
 
-function Cart({ cartItem, onRemoveFromCart, onAddToCart, onRemoveOneFromCart }) {
-  console.log(cartItem);
-  const totalPrice = cartItem.reduce((total, item) => total + item.price * item.quantity, 0);
+function Cart({
+  cartItem,
+  onRemoveFromCart,
+  onAddToCart,
+  onRemoveOneFromCart,
+}) {
+  const totalPrice =
+    cartItem && Array.isArray(cartItem)
+      ? cartItem.reduce((total, item) => total + item.price * item.quantity, 0)
+      : 0;
 
   const handleAddToCart = (item) => {
     const updatedCartItems = addToCart(cartItem, item);
+
     onAddToCart(updatedCartItems);
   };
 
@@ -97,14 +105,15 @@ function Cart({ cartItem, onRemoveFromCart, onAddToCart, onRemoveOneFromCart }) 
 
   const handleRemoveFromCart = (itemId) => {
     const updatedCartItems = removeFromCart(cartItem, itemId);
+
     onRemoveFromCart({ cartItem: updatedCartItems });
   };
 
   const renderCartItems = () => {
-    return cartItem.map((item) => (
+    return ( cartItem && Array.isArray(cartItem) ? cartItem.map((item) => (
       <div key={item.id} className="Cart-Items">
         <div className="image-box">
-          <img src={item.image} alt={item.name} style={{ height: '120px' }} />
+          <img src={item.image} alt={item.name} style={{ height: "120px" }} />
         </div>
         <div className="about">
           <h3 className="title">{item.name}</h3>
@@ -119,17 +128,19 @@ function Cart({ cartItem, onRemoveFromCart, onAddToCart, onRemoveOneFromCart }) 
           </div>
         </div>
         <div className="prices">
-          <div className="amount">${(item.price * item.quantity).toFixed(2)}</div>
+          <div className="amount">
+            ${(item.price * item.quantity).toFixed(2)}
+          </div>
           <div onClick={() => handleRemoveFromCart(item.id)} className="remove">
             <u>Remove</u>
           </div>
         </div>
       </div>
-    ));
+    )):"Cart is empty")
   };
 
   const renderCheckout = () => {
-    if (cartItem.length > 0) {
+    if (cartItem && Array.isArray(cartItem) && cartItem.length > 0) {
       return (
         <>
           <hr />
@@ -141,7 +152,7 @@ function Cart({ cartItem, onRemoveFromCart, onAddToCart, onRemoveOneFromCart }) 
               </div>
               <div className="total-amount">${totalPrice.toFixed(2)}</div>
             </div>
-            <button className="button">Checkout</button>
+            <button className="button btn btn-secondary">Checkout</button>
           </div>
         </>
       );
@@ -154,7 +165,7 @@ function Cart({ cartItem, onRemoveFromCart, onAddToCart, onRemoveOneFromCart }) 
     <div className="CartContainer">
       <div className="Header">
         <h1 className="Heading">Shopping Cart</h1>
-        <h5 onClick={() => onRemoveFromCart([])} className="Action">
+        <h5 onClick={() => onRemoveFromCart({cartItem:[]})} className="Action">
           Remove all
         </h5>
       </div>

@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import onAddToCart from '../pages/CartHandler';
+import { addToCart } from '../pages/CartHandler';
 import foods from '../data/foods';
 import hero1 from '../Images/hero1.jpeg';
 import hero2 from '../Images/hero2.jpg';
@@ -12,8 +12,8 @@ import '../CSS/create-new.css';
 function Menu({ cartItems, onAddToCart }) {
   const [selectedMenuItem, setSelectedMenuItem] = useState('breakfast');
   const handleOrderNow = (food) => {
-    onAddToCart(food);
-    console.log(food);
+    const updatedCartItems = addToCart(cartItems,food)
+    onAddToCart(updatedCartItems)
   };
 
 
