@@ -4,10 +4,6 @@ import foods from '../data/foods';
 import hero1 from '../Images/hero1.jpeg';
 import hero2 from '../Images/hero2.jpg';
 import hero3 from '../Images/hero3.jpg';
-import '../CSS/style.css';
-import '../CSS/index.css';
-import '../CSS/menu_style.css';
-import '../CSS/create-new.css';
 
 function Menu({ cartItems, onAddToCart }) {
   const [selectedMenuItem, setSelectedMenuItem] = useState('breakfast');

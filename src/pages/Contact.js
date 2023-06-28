@@ -1,6 +1,5 @@
 import React from 'react';
 import { useEffect } from 'react';
-import '../CSS/ContactUs.css';
 import image from '../Images/logo-contact.jpg'
 
 function ContactUs() {

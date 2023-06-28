@@ -2,10 +2,6 @@ import React from 'react';
 import andhrameals from '../Images/andhra_meals.png';
 import nonvegmeals from '../Images/non-veg-meals.jpg';
 import paan from '../Images/paan.jpg';
-import '../CSS/style.css';
-import '../CSS/index.css';
-import '../CSS/menu_style.css';
-import '../CSS/create-new.css';
 
 
 function Lunch() {

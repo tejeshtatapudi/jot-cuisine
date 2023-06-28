@@ -1,7 +1,5 @@
 import React, {  } from 'react';
 import mainImage from '../Images/pexels-evie-shaffer-3825880.jpg'
-import '../CSS/style.css';
-import '../CSS/index.css';
 import TypedEffect from "./TypedEffect";
 
 

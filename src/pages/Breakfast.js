@@ -3,10 +3,6 @@ import foods from '../data/foods';
 import idly from '../Images/idly.png';
 import dosa from '../Images/dosa.jpg';
 import tea from '../Images/tea.jpg';
-import '../CSS/style.css';
-import '../CSS/index.css';
-import '../CSS/menu_style.css';
-import '../CSS/create-new.css';
 
 
 function Breakfast() {

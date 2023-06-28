@@ -5,10 +5,6 @@ import {  createUserWithEmailAndPassword  } from 'firebase/auth';
 import { signInWithPopup } from 'firebase/auth';
 import { auth } from '../fireBaseConfig';
 import { GoogleAuthProvider } from "firebase/auth";
-import '../CSS/style.css';
-import '../CSS/index.css';
-import '../CSS/menu_style.css';
-import '../CSS/create-new.css';
 
 
  

@@ -1,8 +1,5 @@
 import React from "react";
 import aboutus from "../data/aboutus";
-import '../CSS/style.css';
-import '../CSS/index.css';
-import '../CSS/aboutUs.css';
 
 
 function AboutUs() {

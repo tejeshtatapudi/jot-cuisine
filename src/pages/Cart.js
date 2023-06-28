@@ -79,7 +79,6 @@
 
 import React from "react";
 import { addToCart, removeOneFromCart, removeFromCart } from "./CartHandler";
-import "../CSS/cart.css";
 
 function Cart({
   cartItem,
