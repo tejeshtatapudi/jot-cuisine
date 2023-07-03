@@ -193,7 +193,7 @@ function Menu({ cartItems, onAddToCart }) {
       </div>
       <div className="container menu-all">
         <div className="row g-3">
-          {foods.length > 0 &&
+          {foods &&
             foods
               .filter(
                 (food) => food.category.toLowerCase() === selectedMenuItem
